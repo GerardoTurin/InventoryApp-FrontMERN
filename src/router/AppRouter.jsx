@@ -27,7 +27,7 @@ const AppRouter = () => {
         }
 
         activeAccount();
-    }, []);
+    }, [status]);
     
 
 
@@ -55,28 +55,31 @@ const AppRouter = () => {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            {status === 'no-registrado' ? (
-                <>
-                    <Route path="login" element={<LoginPage />} />
-                    <Route path="register" element={<RegisterPage />} />
-                    <Route path="forgot-password" element={<ForgotPasswordPage />} />
-                    <Route path="reset-password/:resetToken" element={<ResetPasswordPage />} />
-                    <Route path="register/confirm/:confirmToken" element={<ConfirmUser />} />
-                    <Route path="*" element={<Navigate to="/" />} />
-                </>
-            ) : (
-                <>
-                    <Route path="/layout" element={<LayoutPage />}>
-                        <Route path="dashboard" element={<Dashboard />}/>
-                        <Route path="add-product" element={<AddProduct />}/>
-                        <Route path="update-product/:id" element={<UpdateProduct />}/>
-                        <Route path="profile" element={<Profile />}/>
-                        <Route path="change-password" element={<ChangePassword />}/>
-                        <Route path="support" element={<Support />}/>
-                    </Route>
-                    <Route path="*" element={<Navigate to="/layout/dashboard" />} />
-                </>
-            )}
+            {
+                status === 'no-registrado' ? (
+                    <>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="login" element={<LoginPage />} />
+                        <Route path="register" element={<RegisterPage />} />
+                        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+                        <Route path="reset-password/:resetToken" element={<ResetPasswordPage />} />
+                        <Route path="register/confirm/:confirmToken" element={<ConfirmUser />} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </>
+                ) :  (
+                    <>
+                        <Route path="/layout" element={<LayoutPage />}>
+                            <Route path="dashboard" element={<Dashboard />}/>
+                            <Route path="add-product" element={<AddProduct />}/>
+                            <Route path="update-product/:id" element={<UpdateProduct />}/>
+                            <Route path="profile" element={<Profile />}/>
+                            <Route path="change-password" element={<ChangePassword />}/>
+                            <Route path="support" element={<Support />}/>
+                        </Route>
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </>
+                ) 
+            }
                 </Routes>
             );
         };
