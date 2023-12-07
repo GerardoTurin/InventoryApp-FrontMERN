@@ -54,7 +54,6 @@ const AppRouter = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
             {
                 status === 'no-registrado' ? (
                     <>
@@ -76,7 +75,7 @@ const AppRouter = () => {
                             <Route path="change-password" element={<ChangePassword />}/>
                             <Route path="support" element={<Support />}/>
                         </Route>
-                        <Route path="*" element={<Navigate to="/" />} />
+                        <Route path="*" element={<Navigate to="layout/dashboard" />} />
                     </>
                 ) 
             }

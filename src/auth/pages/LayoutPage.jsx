@@ -73,7 +73,7 @@ const LayoutPage = () => {
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <Link
-                        to='/'
+                        to='/layout/dashboard'
                         style={{
                             textDecoration: 'none',
                             width: open ? '100%' : 'auto',
