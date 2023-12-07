@@ -55,17 +55,7 @@ const AppRouter = () => {
     return (
         <Routes>
             {
-                status === 'no-registrado' ? (
-                    <>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="login" element={<LoginPage />} />
-                        <Route path="register" element={<RegisterPage />} />
-                        <Route path="forgot-password" element={<ForgotPasswordPage />} />
-                        <Route path="reset-password/:resetToken" element={<ResetPasswordPage />} />
-                        <Route path="register/confirm/:confirmToken" element={<ConfirmUser />} />
-                        <Route path="*" element={<Navigate to="/" />} />
-                    </>
-                ) :  (
+                status === 'active' ? (
                     <>
                         <Route path="/layout" element={<LayoutPage />}>
                             <Route path="dashboard" element={<Dashboard />}/>
@@ -76,6 +66,16 @@ const AppRouter = () => {
                             <Route path="support" element={<Support />}/>
                         </Route>
                         <Route path="*" element={<Navigate to="layout/dashboard" />} />
+                    </>
+                ) :  (
+                    <>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="login" element={<LoginPage />} />
+                        <Route path="register" element={<RegisterPage />} />
+                        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+                        <Route path="reset-password/:resetToken" element={<ResetPasswordPage />} />
+                        <Route path="register/confirm/:confirmToken" element={<ConfirmUser />} />
+                        <Route path="*" element={<Navigate to="/" />} />
                     </>
                 ) 
             }
