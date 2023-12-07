@@ -27,7 +27,7 @@ const AppRouter = () => {
         }
 
         activeAccount();
-    }, [status]);
+    }, []);
     
 
 
@@ -41,6 +41,7 @@ const AppRouter = () => {
         );
     
     }
+
     if (status === 'checking') {
         return (
             <Box sx={{ width: '100%' }}>
@@ -52,10 +53,15 @@ const AppRouter = () => {
         );
     }
 
+
+    
+
+
+
     return (
         <Routes>
             {
-                status === 'no-registrado' ? (
+                status === 'no-registrado' && !document.cookie.includes('token') ? (
                     <>
                         <Route path="/" element={<HomePage />} />
                         <Route path="login" element={<LoginPage />} />
