@@ -33,7 +33,10 @@ const TableProduct = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        startGetProducts();
+        const getProducts = async () => {
+            await startGetProducts();
+        }
+        getProducts();
     }, []);
 
 

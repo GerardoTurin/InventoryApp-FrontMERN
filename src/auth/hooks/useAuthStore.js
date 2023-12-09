@@ -51,16 +51,17 @@ const useAuthStore = () => {
 
 
     const startConfirmAccount = async (token) => {
-        dispatch(checkLogin());
+        //dispatch(checkLogin());
 
 
         try {
             const { data } = await inventoryApi.get(`/user/register/confirm/${ token }`,
             { withCredentials: true });
             
-            dispatch( onLogin({ name: data.name, uid: data._id }) );
-            dispatch( onActiveAccount({ name: data.name, uid: data._id, email: data.email, phone: data.phone, photo: data.photo }) );
-            toast.success( `Tu cuenta ha sido confirmada.` );
+            //dispatch( onLogin({ name: data.name, uid: data._id }) );
+            //dispatch( onActiveAccount({ name: data.name, uid: data._id, email: data.email, phone: data.phone, photo: data.photo }) );
+            toast.success( `Tu cuenta ha sido confirmada, ahora puedes iniciar sesión.` );
+            return data;
 
         } catch (error) {
             console.log(error);
@@ -119,7 +120,6 @@ const useAuthStore = () => {
                 return false;
             }
 
-            
             dispatch( onActiveAccount({ name: data.name, uid: data._id, email: data.email, phone: data.phone, photo: data.photo }) );
             return true;
 

@@ -9,8 +9,9 @@ const ConfirmUser = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [isConfirmed, setIsConfirmed] = useState(false);
-    const { startConfirmAccount } = useAuthStore();
+    const { startConfirmAccount, status } = useAuthStore();
     const { confirmToken } = useParams();
+
 
 
 
@@ -19,9 +20,9 @@ const ConfirmUser = () => {
 
         try {
             setLoading(true);
-            startConfirmAccount( confirmToken );
+            await startConfirmAccount( confirmToken );
             setIsConfirmed(true);
-            navigate('/layout/dashboard');
+            navigate('/login');
             
         } catch (error) {
             console.log(error);
@@ -53,7 +54,7 @@ const ConfirmUser = () => {
                     <HowToRegIcon />
                 </Avatar>
                 <Typography variant="h5" component="h2" gutterBottom>
-                    Confirma tu cuenta y comienza a usar la aplicación...
+                    Confirm your account, please 
                 </Typography>
 
                 <Button 
@@ -63,7 +64,7 @@ const ConfirmUser = () => {
                     disabled={ isConfirmed || loading }
                 >
                     { loading ? <CircularProgress color="inherit" size={ 20 } /> : 
-                        !isConfirmed ? 'Confirmar cuenta' : 'Cuenta confirmada '
+                        !isConfirmed ? 'Confirm account' : 'Confirmed'
                     }	
                 </Button>
             </Box>

@@ -57,6 +57,8 @@ const useProductStore = () => {
             dispatch( calcTotalCategories(data) );
             dispatch( calcTotalLowStock(data) );
             dispatch( calcTotalProducts(data) );
+
+            return data;
         } catch (error) {
             console.log(error);
             const errorMenssage = error.response?.data.msg || 'Error inesperado';

@@ -20,7 +20,10 @@ const SummaryProduct = () => {
     
 
     useEffect(() => {
-        startGetProducts();
+        const getProducts = async () => {
+            await startGetProducts();
+        };
+        getProducts();
     }, []);
 
 

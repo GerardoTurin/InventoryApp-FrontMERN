@@ -60,10 +60,10 @@ const AppRouter = () => {
 
     return (
         <Routes>
+            <Route path="/" element={<HomePage />} />
             {
                 status === 'no-registrado' && !document.cookie.includes('token') ? (
                     <>
-                        <Route path="/" element={<HomePage />} />
                         <Route path="login" element={<LoginPage />} />
                         <Route path="register" element={<RegisterPage />} />
                         <Route path="forgot-password" element={<ForgotPasswordPage />} />
